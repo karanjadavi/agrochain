@@ -1,0 +1,166 @@
+﻿* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0f4f0;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+.app { max-width: 900px; margin: 0 auto; padding: 0 16px 40px; }
+
+.header {
+  text-align: center;
+  padding: 40px 20px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.logo-icon { font-size: 36px; }
+.logo-text { font-size: 32px; font-weight: 700; color: #1a5c2a; }
+
+.tagline { color: #555; font-size: 15px; margin-bottom: 12px; }
+
+.contract-badge {
+  display: inline-block;
+  background: #1a5c2a;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.role-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0 20px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.2s;
+}
+
+.tab:hover { background: #f0f4f0; }
+.tab.active.farmer { background: #1a5c2a; color: #fff; }
+.tab.active.buyer { background: #1a3d5c; color: #fff; }
+.tab.active.verifier { background: #5c4a1a; color: #fff; }
+
+.dashboard { display: flex; flex-direction: column; gap: 16px; }
+
+.dashboard-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.dashboard-desc { color: #666; margin-bottom: 8px; }
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.card h3 { font-size: 17px; font-weight: 600; margin-bottom: 16px; color: #222; }
+
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 13px; font-weight: 500; color: #444; margin-bottom: 5px; }
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+.form-group input:focus { border-color: #1a5c2a; }
+
+.btn {
+  padding: 11px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 8px;
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-farmer { background: #1a5c2a; color: #fff; }
+.btn-buyer { background: #1a3d5c; color: #fff; }
+.btn-verifier { background: #5c4a1a; color: #fff; }
+
+.status-msg {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: #f0f7f0;
+  border-left: 3px solid #1a5c2a;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #1a5c2a;
+}
+
+.batch-list { display: flex; flex-direction: column; gap: 12px; }
+
+.batch-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  background: #f8faf8;
+  border-radius: 8px;
+  border: 1px solid #e8f0e8;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.batch-info { display: flex; flex-direction: column; gap: 3px; }
+.batch-crop { font-weight: 700; font-size: 16px; color: #1a1a1a; }
+.batch-detail { font-size: 13px; color: #555; }
+.batch-farmer { font-size: 12px; color: #888; font-family: monospace; }
+
+.batch-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-listed { background: #e8f4e8; color: #1a5c2a; }
+.badge-funded { background: #e8eef4; color: #1a3d5c; }
+.badge-delivered { background: #f4f0e8; color: #5c4a1a; }
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  padding: 30px;
+  font-size: 14px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #999;
+  font-size: 13px;
+}
+
+.footer a { color: #1a5c2a; text-decoration: none; font-weight: 500; }
