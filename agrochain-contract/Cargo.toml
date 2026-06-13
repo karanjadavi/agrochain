@@ -1,0 +1,8 @@
+﻿[workspace]
+resolver = "2"
+members = [
+    "contracts/agrochain",
+]
+
+[workspace.dependencies]
+soroban-sdk = { version = "20.0.0" }

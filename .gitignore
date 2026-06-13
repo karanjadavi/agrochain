@@ -1,0 +1,4 @@
+﻿target/
+node_modules/
+.env
+contract-id.txt
