@@ -5,6 +5,7 @@ import BuyerDashboard from "./components/BuyerDashboard"
 import VerifierDashboard from "./components/VerifierDashboard"
 import WalletConnect from "./components/WalletConnect"
 import Stats from "./components/Stats"
+import TransactionHistory from "./components/TransactionHistory"
 import "./App.css"
 
 export default function App() {
@@ -18,7 +19,6 @@ export default function App() {
         error: { duration: 4000, style: { background: "#fff0f0", color: "#c00", border: "1.5px solid #c00" } },
         loading: { style: { background: "#f0f4ff", color: "#1a3d5c", border: "1.5px solid #1a3d5c" } },
       }} />
-
       <header className="header">
         <div className="header-top">
           <div className="logo">
@@ -37,33 +37,18 @@ export default function App() {
           </div>
         )}
       </header>
-
       <Stats />
-
       <div className="role-tabs">
-        <button
-          className={role === "farmer" ? "tab active farmer" : "tab"}
-          onClick={() => setRole("farmer")}>
-          🧑‍🌾 Farmer
-        </button>
-        <button
-          className={role === "buyer" ? "tab active buyer" : "tab"}
-          onClick={() => setRole("buyer")}>
-          🏪 Buyer
-        </button>
-        <button
-          className={role === "verifier" ? "tab active verifier" : "tab"}
-          onClick={() => setRole("verifier")}>
-          ✅ Verifier
-        </button>
+        <button className={role === "farmer" ? "tab active farmer" : "tab"} onClick={() => setRole("farmer")}>🧑‍🌾 Farmer</button>
+        <button className={role === "buyer" ? "tab active buyer" : "tab"} onClick={() => setRole("buyer")}>🏪 Buyer</button>
+        <button className={role === "verifier" ? "tab active verifier" : "tab"} onClick={() => setRole("verifier")}>✅ Verifier</button>
       </div>
-
       <main className="main">
         {role === "farmer" && <FarmerDashboard walletAddress={walletAddress} />}
         {role === "buyer" && <BuyerDashboard walletAddress={walletAddress} />}
         {role === "verifier" && <VerifierDashboard walletAddress={walletAddress} />}
       </main>
-
+      <TransactionHistory />
       <footer className="footer">
         <p>Built on Stellar Soroban · Nairobi, Kenya · <a href="https://github.com/karanjadavi/agrochain" target="_blank">GitHub</a></p>
       </footer>
