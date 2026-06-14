@@ -1,5 +1,6 @@
 ﻿import { useState } from "react"
 import toast from "react-hot-toast"
+import Spinner from "./Spinner"
 
 export default function VerifierDashboard({ walletAddress }) {
   const [loading, setLoading] = useState(false)
@@ -42,11 +43,8 @@ export default function VerifierDashboard({ walletAddress }) {
               </div>
               <div className="batch-actions">
                 <span className="badge badge-funded">{batch.status}</span>
-                <button
-                  className="btn btn-verifier"
-                  onClick={() => handleConfirm(batch.id)}
-                  disabled={loading}>
-                  Confirm Delivery
+                <button className="btn btn-verifier" onClick={() => handleConfirm(batch.id)} disabled={loading}>
+                  {loading ? <><Spinner size={16} color="#fff" />Confirming...</> : "Confirm Delivery"}
                 </button>
               </div>
             </div>

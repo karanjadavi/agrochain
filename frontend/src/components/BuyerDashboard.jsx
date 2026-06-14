@@ -1,5 +1,6 @@
 ﻿import { useState } from "react"
 import toast from "react-hot-toast"
+import Spinner from "./Spinner"
 
 export default function BuyerDashboard({ walletAddress }) {
   const [loading, setLoading] = useState(false)
@@ -42,11 +43,8 @@ export default function BuyerDashboard({ walletAddress }) {
               </div>
               <div className="batch-actions">
                 <span className="badge badge-listed">{batch.status}</span>
-                <button
-                  className="btn btn-buyer"
-                  onClick={() => handleDeposit(batch.id)}
-                  disabled={loading}>
-                  Deposit Escrow
+                <button className="btn btn-buyer" onClick={() => handleDeposit(batch.id)} disabled={loading}>
+                  {loading ? <><Spinner size={16} color="#fff" />Depositing...</> : "Deposit Escrow"}
                 </button>
               </div>
             </div>

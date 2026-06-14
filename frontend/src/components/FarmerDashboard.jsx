@@ -1,5 +1,6 @@
 ﻿import { useState } from "react"
 import toast from "react-hot-toast"
+import Spinner from "./Spinner"
 
 export default function FarmerDashboard({ walletAddress }) {
   const [form, setForm] = useState({
@@ -64,7 +65,7 @@ export default function FarmerDashboard({ walletAddress }) {
           <input name="verifier" placeholder="G..." value={form.verifier} onChange={handleChange} />
         </div>
         <button className="btn btn-farmer" onClick={handleSubmit} disabled={loading}>
-          {loading ? "Submitting..." : "List Batch on Chain"}
+          {loading ? <><Spinner size={16} color="#fff" />Submitting...</> : "List Batch on Chain"}
         </button>
       </div>
 
