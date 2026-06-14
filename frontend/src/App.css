@@ -164,3 +164,145 @@ body {
 }
 
 .footer a { color: #1a5c2a; text-decoration: none; font-weight: 500; }
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.wallet-btn {
+  padding: 8px 18px;
+  background: #1a5c2a;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.wallet-btn:hover { opacity: 0.85; }
+.wallet-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.wallet-connected {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f7f0;
+  border: 1.5px solid #1a5c2a;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.wallet-dot {
+  width: 8px;
+  height: 8px;
+  background: #1a5c2a;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.wallet-address {
+  font-family: monospace;
+  font-size: 13px;
+  color: #1a5c2a;
+  font-weight: 600;
+}
+
+.wallet-label {
+  font-size: 12px;
+  color: #1a5c2a;
+}
+
+.wallet-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff8e8;
+  border: 1.5px solid #e8a800;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #7a5500;
+}
+
+.wallet-install-btn {
+  background: #e8a800;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.wallet-info {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.mono {
+  font-family: monospace;
+  color: #1a5c2a;
+  font-size: 12px;
+}
+
+.wallet-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wallet-manual-btn {
+  padding: 8px 14px;
+  background: transparent;
+  color: #1a5c2a;
+  border: 1.5px solid #1a5c2a;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wallet-manual-btn:hover { background: #f0f7f0; }
+
+.wallet-manual {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.wallet-input {
+  padding: 7px 12px;
+  border: 1.5px solid #1a5c2a;
+  border-radius: 8px;
+  font-size: 13px;
+  width: 220px;
+  outline: none;
+  font-family: monospace;
+}
+
+.wallet-disconnect {
+  background: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 4px;
+}
+
+.wallet-cancel {
+  padding: 7px 12px;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #666;
+}

@@ -2,22 +2,32 @@
 import FarmerDashboard from "./components/FarmerDashboard"
 import BuyerDashboard from "./components/BuyerDashboard"
 import VerifierDashboard from "./components/VerifierDashboard"
+import WalletConnect from "./components/WalletConnect"
 import "./App.css"
 
 export default function App() {
   const [role, setRole] = useState("farmer")
+  const [walletAddress, setWalletAddress] = useState("")
 
   return (
     <div className="app">
       <header className="header">
-        <div className="logo">
-          <span className="logo-icon">🌾</span>
-          <span className="logo-text">AgroChain</span>
+        <div className="header-top">
+          <div className="logo">
+            <span className="logo-icon">🌾</span>
+            <span className="logo-text">AgroChain</span>
+          </div>
+          <WalletConnect onConnect={setWalletAddress} />
         </div>
         <p className="tagline">Trustless grain escrow on Stellar — built in Kenya, for Africa</p>
         <div className="contract-badge">
           Contract: CDRDKI6MC2UB4VBTWW55AX76KHZP6BGQ46OQRJZGVW2G4X6ZGUUNQSYW
         </div>
+        {walletAddress && (
+          <div className="wallet-info">
+            Your address: <span className="mono">{walletAddress}</span>
+          </div>
+        )}
       </header>
 
       <div className="role-tabs">
@@ -39,9 +49,9 @@ export default function App() {
       </div>
 
       <main className="main">
-        {role === "farmer" && <FarmerDashboard />}
-        {role === "buyer" && <BuyerDashboard />}
-        {role === "verifier" && <VerifierDashboard />}
+        {role === "farmer" && <FarmerDashboard walletAddress={walletAddress} />}
+        {role === "buyer" && <BuyerDashboard walletAddress={walletAddress} />}
+        {role === "verifier" && <VerifierDashboard walletAddress={walletAddress} />}
       </main>
 
       <footer className="footer">
