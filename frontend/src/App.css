@@ -267,3 +267,75 @@ body {
 @media (max-width: 600px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+.about { padding: 20px 0; }
+
+.about-hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: #1a5c2a;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.about-hero h1 { font-size: 36px; margin-bottom: 10px; }
+.about-tagline { font-size: 16px; opacity: 0.85; }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.about-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.about-card h2 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: #1a5c2a; }
+.about-card p { font-size: 14px; color: #555; line-height: 1.7; }
+
+.about-steps { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+.about-steps li { font-size: 14px; color: #555; line-height: 1.6; }
+
+.about-tech { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.about-tech li { font-size: 14px; color: #555; display: flex; align-items: center; gap: 8px; }
+
+.tech-badge {
+  background: #1a5c2a;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.about-roadmap { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.about-roadmap li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+.about-roadmap li.done { color: #1a5c2a; }
+.about-roadmap li.pending { color: #888; }
+
+.about-team { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.team-avatar { font-size: 40px; }
+.about-team strong { font-size: 16px; color: #1a1a1a; }
+.about-team p { font-size: 13px; color: #888; margin: 2px 0; }
+.about-team a { font-size: 13px; color: #1a5c2a; text-decoration: none; font-weight: 500; }
+
+.about-contract {
+  background: #f8faf8;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #e8f0e8;
+}
+
+.about-contract p { font-size: 12px; color: #888; margin-bottom: 4px; }
+.about-contract code { font-size: 11px; color: #1a5c2a; word-break: break-all; }
+
+@media (max-width: 600px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+.tab.active.about { background: #2c2c2c; color: #fff; }

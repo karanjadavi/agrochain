@@ -6,6 +6,7 @@ import VerifierDashboard from "./components/VerifierDashboard"
 import WalletConnect from "./components/WalletConnect"
 import Stats from "./components/Stats"
 import TransactionHistory from "./components/TransactionHistory"
+import About from "./components/About"
 import "./App.css"
 
 export default function App() {
@@ -37,18 +38,25 @@ export default function App() {
           </div>
         )}
       </header>
-      <Stats />
+
+      {role !== "about" && <Stats />}
+
       <div className="role-tabs">
         <button className={role === "farmer" ? "tab active farmer" : "tab"} onClick={() => setRole("farmer")}>🧑‍🌾 Farmer</button>
         <button className={role === "buyer" ? "tab active buyer" : "tab"} onClick={() => setRole("buyer")}>🏪 Buyer</button>
         <button className={role === "verifier" ? "tab active verifier" : "tab"} onClick={() => setRole("verifier")}>✅ Verifier</button>
+        <button className={role === "about" ? "tab active about" : "tab"} onClick={() => setRole("about")}>ℹ️ About</button>
       </div>
+
       <main className="main">
         {role === "farmer" && <FarmerDashboard walletAddress={walletAddress} />}
         {role === "buyer" && <BuyerDashboard walletAddress={walletAddress} />}
         {role === "verifier" && <VerifierDashboard walletAddress={walletAddress} />}
+        {role === "about" && <About />}
       </main>
-      <TransactionHistory />
+
+      {role !== "about" && <TransactionHistory />}
+
       <footer className="footer">
         <p>Built on Stellar Soroban · Nairobi, Kenya · <a href="https://github.com/karanjadavi/agrochain" target="_blank">GitHub</a></p>
       </footer>
