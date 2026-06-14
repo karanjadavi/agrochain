@@ -1,6 +1,7 @@
 ﻿import { useState } from "react"
+import toast from "react-hot-toast"
 
-export default function FarmerDashboard() {
+export default function FarmerDashboard({ walletAddress }) {
   const [form, setForm] = useState({
     buyer: "",
     verifier: "",
@@ -8,7 +9,6 @@ export default function FarmerDashboard() {
     quantity: "",
     price: ""
   })
-  const [status, setStatus] = useState("")
   const [loading, setLoading] = useState(false)
 
   function handleChange(e) {
@@ -16,21 +16,30 @@ export default function FarmerDashboard() {
   }
 
   async function handleSubmit() {
+    if (!walletAddress) {
+      toast.error("Please connect your wallet first!")
+      return
+    }
     if (!form.crop || !form.quantity || !form.price || !form.buyer || !form.verifier) {
-      setStatus("Please fill in all fields.")
+      toast.error("Please fill in all fields.")
       return
     }
     setLoading(true)
-    setStatus("Submitting batch to Stellar testnet...")
+    const toastId = toast.loading("Submitting batch to Stellar testnet...")
     await new Promise(r => setTimeout(r, 2000))
-    setStatus("Batch listed successfully! Waiting for buyer to deposit escrow.")
+    toast.success("Batch listed successfully! Waiting for buyer to deposit escrow.", { id: toastId })
     setLoading(false)
+    setForm({ buyer: "", verifier: "", crop: "", quantity: "", price: "" })
   }
 
   return (
     <div className="dashboard">
       <h2 className="dashboard-title">🧑‍🌾 Farmer Dashboard</h2>
       <p className="dashboard-desc">List your grain batch and set up the escrow deal.</p>
+
+      {!walletAddress && (
+        <div className="warning-box">⚠️ Connect your wallet to list a batch.</div>
+      )}
 
       <div className="card">
         <h3>List a Grain Batch</h3>
@@ -57,7 +66,6 @@ export default function FarmerDashboard() {
         <button className="btn btn-farmer" onClick={handleSubmit} disabled={loading}>
           {loading ? "Submitting..." : "List Batch on Chain"}
         </button>
-        {status && <p className="status-msg">{status}</p>}
       </div>
 
       <div className="card">

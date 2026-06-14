@@ -1,4 +1,5 @@
 ﻿import { useState } from "react"
+import { Toaster } from "react-hot-toast"
 import FarmerDashboard from "./components/FarmerDashboard"
 import BuyerDashboard from "./components/BuyerDashboard"
 import VerifierDashboard from "./components/VerifierDashboard"
@@ -11,6 +12,12 @@ export default function App() {
 
   return (
     <div className="app">
+      <Toaster position="top-right" toastOptions={{
+        success: { duration: 4000, style: { background: "#f0f7f0", color: "#1a5c2a", border: "1.5px solid #1a5c2a" } },
+        error: { duration: 4000, style: { background: "#fff0f0", color: "#c00", border: "1.5px solid #c00" } },
+        loading: { style: { background: "#f0f4ff", color: "#1a3d5c", border: "1.5px solid #1a3d5c" } },
+      }} />
+
       <header className="header">
         <div className="header-top">
           <div className="logo">

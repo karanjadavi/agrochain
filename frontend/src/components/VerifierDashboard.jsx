@@ -1,17 +1,21 @@
 ﻿import { useState } from "react"
+import toast from "react-hot-toast"
 
-export default function VerifierDashboard() {
-  const [status, setStatus] = useState("")
+export default function VerifierDashboard({ walletAddress }) {
   const [loading, setLoading] = useState(false)
   const [batches] = useState([
     { id: 1, farmer: "GBHVG...DELW", buyer: "GCXYZ...1234", crop: "Maize", quantity: 500, price: 1000, status: "Funded" },
   ])
 
   async function handleConfirm(id) {
+    if (!walletAddress) {
+      toast.error("Please connect your wallet first!")
+      return
+    }
     setLoading(true)
-    setStatus(`Confirming delivery for batch #${id}...`)
+    const toastId = toast.loading(`Confirming delivery for batch #${id}...`)
     await new Promise(r => setTimeout(r, 2000))
-    setStatus(`Delivery confirmed for batch #${id}! Funds released to farmer automatically.`)
+    toast.success(`Delivery confirmed for batch #${id}! Funds released to farmer automatically.`, { id: toastId })
     setLoading(false)
   }
 
@@ -19,6 +23,10 @@ export default function VerifierDashboard() {
     <div className="dashboard">
       <h2 className="dashboard-title">✅ Verifier Dashboard</h2>
       <p className="dashboard-desc">Confirm grain deliveries to release funds to farmers.</p>
+
+      {!walletAddress && (
+        <div className="warning-box">⚠️ Connect your wallet to confirm deliveries.</div>
+      )}
 
       <div className="card">
         <h3>Pending Deliveries</h3>
@@ -44,7 +52,6 @@ export default function VerifierDashboard() {
             </div>
           ))}
         </div>
-        {status && <p className="status-msg">{status}</p>}
       </div>
 
       <div className="card">

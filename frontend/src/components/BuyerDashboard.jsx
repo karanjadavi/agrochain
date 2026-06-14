@@ -1,8 +1,7 @@
 ﻿import { useState } from "react"
+import toast from "react-hot-toast"
 
-export default function BuyerDashboard() {
-  const [batchId, setBatchId] = useState("")
-  const [status, setStatus] = useState("")
+export default function BuyerDashboard({ walletAddress }) {
   const [loading, setLoading] = useState(false)
   const [batches] = useState([
     { id: 1, farmer: "GBHVG...DELW", crop: "Maize", quantity: 500, price: 1000, status: "Listed" },
@@ -10,10 +9,14 @@ export default function BuyerDashboard() {
   ])
 
   async function handleDeposit(id) {
+    if (!walletAddress) {
+      toast.error("Please connect your wallet first!")
+      return
+    }
     setLoading(true)
-    setStatus(`Depositing escrow for batch #${id}...`)
+    const toastId = toast.loading(`Depositing escrow for batch #${id}...`)
     await new Promise(r => setTimeout(r, 2000))
-    setStatus(`Escrow deposited for batch #${id}! Waiting for delivery confirmation.`)
+    toast.success(`Escrow deposited for batch #${id}! Waiting for delivery confirmation.`, { id: toastId })
     setLoading(false)
   }
 
@@ -21,6 +24,10 @@ export default function BuyerDashboard() {
     <div className="dashboard">
       <h2 className="dashboard-title">🏪 Buyer Dashboard</h2>
       <p className="dashboard-desc">Browse available grain batches and deposit escrow to secure your purchase.</p>
+
+      {!walletAddress && (
+        <div className="warning-box">⚠️ Connect your wallet to deposit escrow.</div>
+      )}
 
       <div className="card">
         <h3>Available Grain Batches</h3>
@@ -45,7 +52,6 @@ export default function BuyerDashboard() {
             </div>
           ))}
         </div>
-        {status && <p className="status-msg">{status}</p>}
       </div>
 
       <div className="card">
