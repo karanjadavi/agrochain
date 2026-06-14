@@ -4,6 +4,7 @@ import FarmerDashboard from "./components/FarmerDashboard"
 import BuyerDashboard from "./components/BuyerDashboard"
 import VerifierDashboard from "./components/VerifierDashboard"
 import WalletConnect from "./components/WalletConnect"
+import Stats from "./components/Stats"
 import "./App.css"
 
 export default function App() {
@@ -36,6 +37,8 @@ export default function App() {
           </div>
         )}
       </header>
+
+      <Stats />
 
       <div className="role-tabs">
         <button
